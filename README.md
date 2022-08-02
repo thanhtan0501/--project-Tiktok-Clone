@@ -1,6 +1,48 @@
-# Getting Started with Create React App
+# Setting customize-cra
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lesson 91 (F8) :[https://github.com/timarney/react-app-rewired/](https://github.com/timarney/react-app-rewired/)
+
+# Setting babel-plugin-module-resolver
+
+Lesson 92 (F8) :[https://github.com/tleunen/babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver)
+
+# Configuration using CSS/SASS
+
+Lesson 94 (F8)
+
+1. Create GlobalStyles component
+2. Install the SASS library: `npm i -D sass`
+3. Reset CSS
+4. Default CSS: font-family, font-size, line-height.
+
+# Configure Router/Layout for the project
+
+Lesson 95 (F8)
+
+1. Overview analysis of Layout
+2. Install react-router-dom: `npm i react-router-dom`
+3. Expose your routes configuration
+4. Build Layout loading mechanism
+
+## Build the default Layout frame
+
+Install classnames library: `npm i classnames`
+
+## Building UI for Header
+
+1. Install font deps at file package.json (dependencies)
+   `"@fortawesome/fontawesome-svg-core": "^1.3.0",`
+   `"@fortawesome/free-brands-svg-icons": "^6.0.0",`
+   `"@fortawesome/free-regular-svg-icons": "^6.0.0",`
+   `"@fortawesome/free-solid-svg-icons": "^6.0.0",`
+   `"@fortawesome/react-fontawesome": "^0.1.17",`
+
+    Type the command `npm i` to update again
+
+2.Install Tippy.js. Tippy.js is the complete tooltip, popover, dropdown, and menu solution for the web, powered by Popper:
+`npm i @tippyjs/react`
+
+Link :[https://github.com/atomiks/tippyjs-react](https://github.com/atomiks/tippyjs-react)
 
 ## Available Scripts
 
