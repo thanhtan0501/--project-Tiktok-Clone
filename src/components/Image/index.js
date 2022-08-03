@@ -5,7 +5,7 @@ import styles from "./Image.module.scss";
 
 import images from "~/assets/images";
 
-const Images = forwardRef(
+const Image = forwardRef(
     (
         { src, className, fallback: customFallback = images.noImage, ...props },
         ref
@@ -29,4 +29,4 @@ const Images = forwardRef(
     }
 );
 
-export default Images;
+export default Image;
