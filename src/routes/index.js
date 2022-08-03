@@ -8,12 +8,14 @@ import Upload from "~/pages/Upload";
 import Search from "~/pages/Search";
 
 // Router không cần đăng nhập vẫn xem được
-export const publicRoutes = [
+const publicRoutes = [
     { path: "/", component: Home },
     { path: "/following", component: Following },
-    { path: "/profile", component: Profile },
+    { path: "/@:nickname", component: Profile },
     { path: "/upload", component: Upload, layout: HeaderOnly },
     { path: "/search", component: Search, layout: null },
 ];
 // Router cần đăng nhập mới xem được
-export const privateRoutes = [];
+const privateRoutes = [];
+
+export { publicRoutes, privateRoutes };

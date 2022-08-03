@@ -9,6 +9,7 @@ import HeadlessTippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { SearchIcon } from "~/components/Icons";
+import { useDebounce } from "~/routes/hooks";
 
 const cx = classNames.bind(styles);
 
@@ -16,14 +17,34 @@ function Search() {
     const [searchValue, setSearchValue] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const debounce = useDebounce(searchValue, 400);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3, 4]);
-        }, 0);
-    }, []);
+        if (!debounce.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        // encodeURIComponent(value): mã hóa value thành ký tự hợp lệ trên URL
+        // API được lấy từ fullstack.edu.vn
+        setLoading(true);
+        fetch(
+            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+                debounce
+            )}&type=less`
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [debounce]);
 
     const handleClear = () => {
         setSearchValue("");
@@ -42,10 +63,9 @@ function Search() {
                 <div className={cx("search-result")} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx("search-title")}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -57,20 +77,27 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos..."
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value[0] !== " ") {
+                            // Xử lý không cho nhập khoảng trắng đầu tiền
+                            setSearchValue(e.target.value);
+                        }
+                    }}
                     onFocus={() => setShowResult(true)}
                 />
 
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx("clear")} onClick={handleClear}>
-                        {/* icon clear */}
                         <FontAwesomeIcon icon={faCircleXmark} />
-                        {/* <FontAwesomeIcon icon="fa-solid fa-circle-xmark" /> */}
                     </button>
                 )}
 
-                {/* icon loading */}
-                {/* <FontAwesomeIcon className={cx("loading")} icon={faSpinner} /> */}
+                {loading && (
+                    <FontAwesomeIcon
+                        className={cx("loading")}
+                        icon={faSpinner}
+                    />
+                )}
 
                 <button className={cx("search-btn")}>
                     {/* icon search */}
