@@ -181,35 +181,45 @@ function Header() {
                 <div className={cx("actions")}>
                     {currentUser ? (
                         <>
-                            <Tippy
-                                delay={[0, 80]}
-                                content="Upload Video"
-                                placement="bottom"
-                            >
-                                <button className={cx("action-btn")}>
-                                    <UploadIcon />
-                                </button>
-                            </Tippy>
+                            <div>
+                                <Tippy
+                                    delay={[0, 80]}
+                                    interactive
+                                    content="Upload Video"
+                                    placement="bottom"
+                                >
+                                    <button className={cx("action-btn")}>
+                                        <UploadIcon />
+                                    </button>
+                                </Tippy>
+                            </div>
 
-                            <Tippy
-                                delay={[0, 80]}
-                                content="Message"
-                                placement="bottom"
-                            >
-                                <button className={cx("action-btn")}>
-                                    <MessageIcon />
-                                </button>
-                            </Tippy>
-                            <Tippy
-                                delay={[0, 80]}
-                                content="Inbox"
-                                placement="bottom"
-                            >
-                                <button className={cx("action-btn")}>
-                                    <InboxIcon />
-                                    <span className={cx("badge")}>12</span>
-                                </button>
-                            </Tippy>
+                            <div>
+                                <Tippy
+                                    delay={[0, 80]}
+                                    interactive
+                                    content="Message"
+                                    placement="bottom"
+                                >
+                                    <button className={cx("action-btn")}>
+                                        <MessageIcon />
+                                    </button>
+                                </Tippy>
+                            </div>
+
+                            <div>
+                                <Tippy
+                                    delay={[0, 80]}
+                                    interactive
+                                    content="Inbox"
+                                    placement="bottom"
+                                >
+                                    <button className={cx("action-btn")}>
+                                        <InboxIcon />
+                                        <span className={cx("badge")}>12</span>
+                                    </button>
+                                </Tippy>
+                            </div>
                         </>
                     ) : (
                         <>
