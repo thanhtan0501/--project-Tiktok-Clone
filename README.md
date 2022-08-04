@@ -44,6 +44,12 @@ Install classnames library: `npm i classnames`
 
 Link :[https://github.com/atomiks/tippyjs-react](https://github.com/atomiks/tippyjs-react)
 
+## Install Axios library
+
+`npm i axios`
+
+Lesson 107 (F8)
+
 ## Available Scripts
 
 In the project directory, you can run:

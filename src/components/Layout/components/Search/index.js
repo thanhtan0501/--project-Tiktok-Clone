@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { SearchIcon } from "~/components/Icons";
 import { useDebounce } from "~/routes/hooks";
+import * as searchService from "~/apiServices/searchService";
 
 const cx = classNames.bind(styles);
 
@@ -28,22 +29,19 @@ function Search() {
             setSearchResult([]);
             return;
         }
+        setLoading(true);
         // encodeURIComponent(value): mã hóa value thành ký tự hợp lệ trên URL
         // API được lấy từ fullstack.edu.vn
-        setLoading(true);
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debounce
-            )}&type=less`
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        // Sử dụng thư viện Axios để gửi request API
+        const fetchAPI = async () => {
+            setLoading(true);
+
+            const result = await searchService.search(debounce, "less");
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+        fetchAPI();
     }, [debounce]);
 
     const handleClear = () => {
