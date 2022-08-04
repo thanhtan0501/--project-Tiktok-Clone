@@ -50,6 +50,8 @@ Link :[https://github.com/atomiks/tippyjs-react](https://github.com/atomiks/tipp
 
 Lesson 107 (F8)
 
+## Using the Prop-types to optimize
+
 ## Available Scripts
 
 In the project directory, you can run:

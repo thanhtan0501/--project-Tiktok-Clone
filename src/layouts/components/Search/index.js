@@ -9,8 +9,8 @@ import HeadlessTippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { SearchIcon } from "~/components/Icons";
-import { useDebounce } from "~/routes/hooks";
-import * as searchService from "~/apiServices/searchService";
+import { useDebounce } from "~/hooks";
+import * as searchService from "~/services/searchService";
 
 const cx = classNames.bind(styles);
 
