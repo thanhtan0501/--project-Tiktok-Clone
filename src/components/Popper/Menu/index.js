@@ -68,6 +68,7 @@ function Menu({
             placement="bottom-end"
             render={renderResult}
             onHide={handleResetMenu}
+            zIndex={2}
         >
             {children}
         </Tippy>

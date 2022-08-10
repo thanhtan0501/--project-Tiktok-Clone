@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import Button from "~/components/Button";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-
 import Menu from "~/components/Popper/Menu/";
 import { InboxIcon, MessageIcon, UploadIcon } from "~/components/Icons";
 import Image from "~/components/Image";
@@ -140,12 +139,11 @@ const MENU_ITEMS = [
 ];
 function Header() {
     const currentUser = true;
-
     const userMenu = [
         {
             icon: <img src={images.user} alt="" />,
             title: "View profile",
-            to: "/@hoa",
+            to: `/@hoa`,
         },
         {
             icon: <img src={images.tiktokcoin} alt="" />,
@@ -170,6 +168,7 @@ function Header() {
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
     };
+    const handleSubmitLogin = () => {};
     return (
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
@@ -182,16 +181,18 @@ function Header() {
                     {currentUser ? (
                         <>
                             <div>
-                                <Tippy
-                                    delay={[0, 80]}
-                                    interactive
-                                    content="Upload Video"
-                                    placement="bottom"
-                                >
-                                    <button className={cx("action-btn")}>
-                                        <UploadIcon />
-                                    </button>
-                                </Tippy>
+                                <Link to={config.routes.upload}>
+                                    <Tippy
+                                        delay={[0, 80]}
+                                        interactive
+                                        content="Upload Video"
+                                        placement="bottom"
+                                    >
+                                        <button className={cx("action-btn")}>
+                                            <UploadIcon />
+                                        </button>
+                                    </Tippy>
+                                </Link>
                             </div>
 
                             <div>
@@ -223,8 +224,12 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text>Upload</Button>
-                            <Button primary>Log in</Button>
+                            <Link to={config.routes.upload}>
+                                <Button text>Upload</Button>
+                            </Link>
+                            <Button primary onClick={handleSubmitLogin}>
+                                Log in
+                            </Button>
                         </>
                     )}
                     <Menu
@@ -235,8 +240,11 @@ function Header() {
                             <Image
                                 src="123"
                                 className={cx("user-avatar")}
-                                alt="Nguyen van hoa"
-                                fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ddad23f658a5ae9ddafd18a2b4d98c5e~c5_100x100.jpeg?x-expires=1659672000&x-signature=CHYwMQUfoTP6ynFlWqz9r9vGo5M%3D"
+                                fallback="https://i.pinimg.com/474x/44/15/ba/4415ba5df0f4bfcee5893d6c441577e0.jpg"
+                                // src={currentUser.image}
+                                // className={cx("user-avatar")}
+                                // alt={currentUser.userName}
+                                // fallback={currentUser.image}
                             />
                         ) : (
                             <button className={cx("more-btn")}>

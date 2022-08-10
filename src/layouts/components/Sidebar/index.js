@@ -10,11 +10,17 @@ import {
     LiveActiveIcon,
 } from "~/components/Icons";
 
+import Button from "~/components/Button";
 import styles from "./Sidebar.module.scss";
+import Footer from "./Footer";
+import Discover from "./Discover/inde";
+import MenuUser from "./MenuUser";
 
 const cx = classNames.bind(styles);
 
 function Sidebar() {
+    const currentUser = true;
+
     return (
         <aside className={cx("wrapper")}>
             <Menu>
@@ -37,6 +43,21 @@ function Sidebar() {
                     activeIcon={<LiveActiveIcon />}
                 />
             </Menu>
+            {!currentUser && (
+                <div className={cx("container-login")}>
+                    <span className={cx("title")}>
+                        Log in to follow creators, like videos, and view
+                        comments.
+                    </span>
+                    <Button outline className={cx("login-btn")}>
+                        Log in
+                    </Button>
+                </div>
+            )}
+            {/* <MenuUser />
+            <MenuUser /> */}
+            <Discover />
+            <Footer />
         </aside>
     );
 }

@@ -6,12 +6,19 @@
 
 .container {
     margin-top: var(--default-layout-header-height);
+    display: flex;
     width: var(--default-layout-width);
     max-width: 100%;
-    padding: 0 var(--default-layout-horizontal-spacer) 0 0;
-    display: flex;
+    // padding: 0 var(--default-layout-horizontal-spacer) 0 0;
+    justify-content: space-between;
+    align-self: center;
 }
 
 .content {
-    flex: 1;
+    margin-right: 16px;
+    margin-left: 16px;
+    width: 692px;
+    max-width: 692px;
+    padding: 24px 0;
+    position: relative;
 }

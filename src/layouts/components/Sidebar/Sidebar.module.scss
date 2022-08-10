@@ -2,3 +2,36 @@
     width: 356px;
     padding: 20px 0 26px 8px;
 }
+.container-login {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 8px 24px 8px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        width: calc(100% - 16px);
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
+    .title {
+        color: rgba(22, 24, 35, 0.5);
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .login-btn {
+        min-height: 48px;
+        font-size: 1.8rem;
+        line-height: 25px;
+        // font-weight: 600;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        box-sizing: border-box;
+        margin-top: 20px;
+        width: 100%;
+    }
+}
